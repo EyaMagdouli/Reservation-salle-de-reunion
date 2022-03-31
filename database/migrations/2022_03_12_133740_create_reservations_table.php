@@ -13,13 +13,28 @@ class CreateReservationsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('reservations');
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('salle_id');
+            $table->integer('user_id');
+            $table->integer('salle_id');
+            $table->datetime('start_time')->nullable();
+            $table->datetime('end_time')->nullable();
+            $table->boolean('isApproved');
             $table->timestamps();
+
         });
+
+
+            Schema::table('reservations' , function (Blueprint $table) {
+                $table->SoftDeletes();
+        });
+
+
     }
+
+
+
 
     /**
      * Reverse the migrations.

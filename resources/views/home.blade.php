@@ -67,13 +67,13 @@
 								</div>
 							</div>
 							 <div class="row">
-								<div class="col-sm-6">
+								<div class="col-sm-4">
 									<div class="form-group">
 										<span class="form-label"> Date</span>
 										<input class="form-control" type="date" required>
 									</div>
 								</div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
 									<div class="form-group">
 										<span class="form-label"> Salle</span>
 										<select class="form-control" required>
@@ -82,8 +82,24 @@
                                         <span class="select-arrow"></span>
 									</div>
 								</div>
+                                <div class="col-sm-4">
+									<div class="form-group">
+										<span class="form-label"> Capacité</span>
+										<select class="form-control" required>
+                                                    <option>0</option>
+                                                    <option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+													<option>5</option>
+                                        </select>
+                                        <span class="select-arrow"></span>
+									</div>
+								</div>
                             </div>
+
                             <div class="row">
+                                <h3 style="color: rgb(204, 175, 48)"> Start Time : </h3>
 										<div class="col-sm-4">
 											<div class="form-group">
 												<span class="form-label">Heure</span>
@@ -133,7 +149,64 @@
 												</select>
 												<span class="select-arrow"></span>
 											</div>
+
 								</div>
+                                <h3 style="color: rgb(204, 175, 48)"> End Time : </h3>
+                                <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <span class="form-label">Heure</span>
+                                                    <select class="form-control">
+                                                        <option>0</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                        <option>10</option>
+                                                        <option>11</option>
+                                                        <option>12</option>
+                                                    </select>
+                                                    <span class="select-arrow"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <span class="form-label">Min</span>
+                                                    <select class="form-control">
+                                                        <option>05</option>
+                                                        <option>10</option>
+                                                        <option>15</option>
+                                                        <option>20</option>
+                                                        <option>25</option>
+                                                        <option>30</option>
+                                                        <option>35</option>
+                                                        <option>40</option>
+                                                        <option>45</option>
+                                                        <option>50</option>
+                                                        <option>55</option>
+                                                    </select>
+                                                    <span class="select-arrow"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <span class="form-label">AM/PM</span>
+                                                    <select class="form-control">
+                                                        <option>AM</option>
+                                                        <option>PM</option>
+                                                    </select>
+                                                    <span class="select-arrow"></span>
+                                                </div>
+
+                                    </div>
+                            </div>
+
+
 
 							<div class="form-btn">
 								<button type="submit" class="submit-btn">Réserver</button>

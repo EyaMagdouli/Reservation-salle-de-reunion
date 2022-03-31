@@ -15,8 +15,12 @@ class CreateSallesTable extends Migration
     {
         Schema::create('salles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+            $table->integer('capacity')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
