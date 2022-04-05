@@ -1,222 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-	<title>Booking Form HTML Template</title>
-
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-
-	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-
-	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
-</head>
-
-<body>
-    <!--navbar-->
-    <div class="navbar">
-        <div class="container1 flex">
-                <img src="img/logo.png" alt="logo" class="logo" style='max-width:230px;'>
-                <nav>
-                    <ul>
-                        <li>
-                            <a class="btn btn-warning" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    </ul>
-                </nav>
-        </div>
-
-    </div>
-
-	<div id="booking" class="section">
-		<div class="section-center">
-			<div class="container">
-				<div class="row">
-					<div class="booking-form">
-						<div class="form-header">
-							<h1>Réserver une salle pour votre réunion</h1>
-						</div>
-						<form>
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="form-group">
-										<span class="form-label">Email</span>
-										<input class="form-control" type="email" placeholder="Enter your email">
-									</div>
-								</div>
-                                <div class="col-sm-6">
-									<div class="form-group">
-										<span class="form-label">Mot de passe</span>
-										<input class="form-control" type="password" placeholder="Enter your password">
-									</div>
-								</div>
-							</div>
-							 <div class="row">
-								<div class="col-sm-4">
-									<div class="form-group">
-										<span class="form-label"> Date</span>
-										<input class="form-control" type="date" required>
-									</div>
-								</div>
+@extends('layouts.app')
+@section('content')
+<!--body section -->
+    <div id="booking" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="row">
+                    <div class="booking-form">
+                        <div class="form-header">
+                            <h1>Réserver une salle pour votre réunion</h1>
+                        </div>
+                        <form method="POST" action="{{ route('reservation.store_reservation') }}">
+                            @csrf
+                            <div class="row">
                                 <div class="col-sm-4">
-									<div class="form-group">
-										<span class="form-label"> Salle</span>
-										<select class="form-control" required>
-                                            <option> </option>
+                                    <div class="form-group">
+                                        <span class="form-label"> Date</span>
+                                        <input class="form-control" name="date" type="date" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <span class="form-label"> Salle</span>
+                                        <select name="salle_id" id="salle_id" class="form-control" required  >
+                                            @php
+                                                $salles = \App\Models\Salle::where('isReserved',0)->get();
+                                            @endphp
+                                            @foreach ($salles as $salle )
+                                                <option value="{{$salle->id}}"> {{$salle->slug}} </option>
+                                            @endforeach
                                         </select>
                                         <span class="select-arrow"></span>
-									</div>
-								</div>
+                                    </div>
+                                </div>
                                 <div class="col-sm-4">
-									<div class="form-group">
-										<span class="form-label"> Capacité</span>
-										<select class="form-control" required>
-                                                    <option>0</option>
-                                                    <option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-                                        </select>
+                                    <div class="form-group">
+                                        <span class="form-label"> Capacité</span>
+                                        <input type="number" name="capacity" value="2"  class="form-control" required/>
+                                        {{-- <select name="salle_id" id="salle_id" class="form-control" required >
+                                        @foreach ($salles as $salle )
+                                            <option value="{{$salle->id}}"> {{$salle->capacity}} </option>
+
+                                        @endforeach
+                                        </select> --}}
                                         <span class="select-arrow"></span>
-									</div>
-								</div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
-                                <h3 style="color: rgb(204, 175, 48)"> Start Time : </h3>
-										<div class="col-sm-4">
-											<div class="form-group">
-												<span class="form-label">Heure</span>
-												<select class="form-control">
-													<option>0</option>
-                                                    <option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-													<option>6</option>
-													<option>7</option>
-													<option>8</option>
-													<option>9</option>
-													<option>10</option>
-													<option>11</option>
-													<option>12</option>
-												</select>
-												<span class="select-arrow"></span>
-											</div>
-										</div>
-										<div class="col-sm-4">
-											<div class="form-group">
-												<span class="form-label">Min</span>
-												<select class="form-control">
-													<option>05</option>
-													<option>10</option>
-													<option>15</option>
-													<option>20</option>
-													<option>25</option>
-													<option>30</option>
-													<option>35</option>
-													<option>40</option>
-													<option>45</option>
-													<option>50</option>
-													<option>55</option>
-												</select>
-												<span class="select-arrow"></span>
-											</div>
-										</div>
-										<div class="col-sm-4">
-											<div class="form-group">
-												<span class="form-label">AM/PM</span>
-												<select class="form-control">
-													<option>AM</option>
-													<option>PM</option>
-												</select>
-												<span class="select-arrow"></span>
-											</div>
-
-								</div>
-                                <h3 style="color: rgb(204, 175, 48)"> End Time : </h3>
-                                <div class="row">
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <span class="form-label">Heure</span>
-                                                    <select class="form-control">
-                                                        <option>0</option>
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                        <option>6</option>
-                                                        <option>7</option>
-                                                        <option>8</option>
-                                                        <option>9</option>
-                                                        <option>10</option>
-                                                        <option>11</option>
-                                                        <option>12</option>
-                                                    </select>
-                                                    <span class="select-arrow"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <span class="form-label">Min</span>
-                                                    <select class="form-control">
-                                                        <option>05</option>
-                                                        <option>10</option>
-                                                        <option>15</option>
-                                                        <option>20</option>
-                                                        <option>25</option>
-                                                        <option>30</option>
-                                                        <option>35</option>
-                                                        <option>40</option>
-                                                        <option>45</option>
-                                                        <option>50</option>
-                                                        <option>55</option>
-                                                    </select>
-                                                    <span class="select-arrow"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <span class="form-label">AM/PM</span>
-                                                    <select class="form-control">
-                                                        <option>AM</option>
-                                                        <option>PM</option>
-                                                    </select>
-                                                    <span class="select-arrow"></span>
-                                                </div>
-
+                                <div class="col-sm-6">
+                                    <h3 style="color: rgb(204, 175, 48)"> Start Time : </h3>
+                                    <div class="form-group">
+                                        <input class="form-control" type="time" id="appt" name="start_time" required>
                                     </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h3 style="color: rgb(204, 175, 48)"> End Time : </h3>
+                                    <div class="form-group">
+                                        <input class="form-control" type="time" id="appt" name="end_time" required>
+                                    </div>
+                                </div>
+
                             </div>
+                                <div class="form-btn">
+                                    <input type="submit" class="submit-btn" value="Réserver">
+                                </div>
 
-
-
-							<div class="form-btn">
-								<button type="submit" class="submit-btn">Réserver</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-
-</html>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    function setCapacity(e){
+        let val = document.getElementById('salle_id').value;
+        let capacity = val.split('::')[1];
+        console.log(val)
+        document.getElementById('capacity').value = capacity;
+    }
+</script>
+@endsection

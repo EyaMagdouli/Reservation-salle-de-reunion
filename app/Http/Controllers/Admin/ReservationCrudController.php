@@ -45,8 +45,7 @@ class ReservationCrudController extends CrudController
         CRUD::column('start_time');
         CRUD::column('end_time');
         CRUD::column('isApproved');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
+        CRUD::column('date');
         CRUD::column('deleted_at');
 
         /**
@@ -72,8 +71,7 @@ class ReservationCrudController extends CrudController
         CRUD::field('start_time');
         CRUD::field('end_time');
         CRUD::field('isApproved');
-        CRUD::field('created_at');
-        CRUD::field('updated_at');
+        CRUD::field('date');
         CRUD::field('deleted_at');
 
         /**

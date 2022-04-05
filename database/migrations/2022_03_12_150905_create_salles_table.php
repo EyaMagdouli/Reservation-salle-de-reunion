@@ -18,6 +18,7 @@ class CreateSallesTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->integer('capacity')->nullable();
+            $table->boolean('isReserved')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

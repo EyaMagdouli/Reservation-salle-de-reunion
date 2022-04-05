@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateReservationsTable extends Migration
@@ -16,12 +17,12 @@ class CreateReservationsTable extends Migration
         Schema::dropIfExists('reservations');
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('salle_id');
-            $table->datetime('start_time')->nullable();
-            $table->datetime('end_time')->nullable();
-            $table->boolean('isApproved');
-            $table->timestamps();
+            $table->integer('user_id')->nullable();
+            $table->integer('salle_id')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('end_time')->nullable();
+            $table->boolean('isApproved')->default(0)->nullable();
+            $table->string('date')/* ->default(DB::raw('CURRENT_TIMESTAMP')) */->nullable();
 
         });
 

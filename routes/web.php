@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReservationController;
+use Backpack\CRUD\app\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +21,21 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/',[LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/admin', [AdminController::class, 'dashboard']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('Auth');;
+Route::get('/',[LoginController::class, 'showLoginForm']);
+
+//Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('Auth');
+
+
+
+Route::group(['middleware'=>'auth'], function(){
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::resource('reservation', [ReservationController::class]);
+});
+
+
+
+
+
+

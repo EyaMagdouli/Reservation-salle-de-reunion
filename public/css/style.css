@@ -25,6 +25,10 @@ ul{
     padding: 10px;
     margin: 0 5px;
 }
+.navbar-nav {
+    float: right !important;
+}
+
 .navbar a:hover{
     border-bottom: 2px #333 solid;
 }

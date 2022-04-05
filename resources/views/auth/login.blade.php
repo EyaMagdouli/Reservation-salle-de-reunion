@@ -11,6 +11,16 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
+                        <div class="login-box-body">
+                            @if (session()->has('message'))
+                                <p class="alert alert-info">
+                                    {{session()->get('message')}}
+                                </p>
+
+                            @endif
+
+                        </div>
+
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
