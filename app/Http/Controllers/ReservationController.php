@@ -36,7 +36,7 @@
         public function store(Request $request): \Illuminate\Http\RedirectResponse
         {
             // create new reservation for user
-            Reservation::create(
+            $reservation = Reservation::create(
                 [
                     'date'       => $request->date,
                     'salle_id'   => $request->salle_id,
@@ -48,8 +48,15 @@
             );
 
 
-            return redirect()->route('reservation.show')
+            return redirect()->route('reservation.show', ['reservation'=> $reservation->id])
                              ->with('success', 'Reservation created successfully.');
+        }
+
+        public function show(Request $request, $reservationId)
+        {
+           // dd($request->all());
+            dd($reservationId);
+
         }
 
         public function store_reservation(Request $request)
