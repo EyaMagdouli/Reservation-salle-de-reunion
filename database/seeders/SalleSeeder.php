@@ -21,14 +21,14 @@ class SalleSeeder extends Seeder
 
 
         // ]);
-        $salle = Salle::create([
+        Salle::create([
             'name' => 'salle5',
             'slug' => 'salle-5',
             'capacity'=>'9'
 
 
         ]);
-        $salle = Salle::create([
+        Salle::create([
             'name' => 'salle1',
             'slug' => 'salle-1',
             'capacity'=>'2'
