@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         Eloquent::reguard();
         $this->call(UserSeeder::class);
+        $this->call(SalleSeeder::class);
+        $this->call(AdminSeeder::class);
     }
 }

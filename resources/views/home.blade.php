@@ -11,45 +11,39 @@
                         </div>
 
                         {{-- /*route('reservation.store_reservation')*/  --}}
-                        <form method="POST" action="">
+                        <form method="POST" action="{{ route('reservation.store') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label>
-                                            <span class="form-label"> Date</span>
-                                            <input class="form-control" name="date" type="date" required>
-                                        </label>
+                                        <span class="form-label"> Date</span>
+                                        <input class="form-control" name="date" type="date" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                       <label>
-                                           <span class="form-label"> Salle</span>
-                                           <select name="salle_id" id="salle_id" class="form-control" required  >
-                                               @php
-                                                   $salles = \App\Models\Salle::where('isReserved',0)->get();
-                                               @endphp
-                                               @foreach ($salles as $salle )
-                                                   <option value="{{$salle->id}}"> {{$salle->slug}} </option>
-                                               @endforeach
-                                           </select>
-                                       </label>
+                                        <span class="form-label"> Salle</span>
+                                        <select name="salle_id" id="salle_id" class="form-control" required  >
+                                            @php
+                                                $salles = \App\Models\Salle::where('isReserved',0)->get();
+                                            @endphp
+                                            @foreach ($salles as $salle )
+                                                <option value="{{$salle->id}}"> {{$salle->slug}} </option>
+                                            @endforeach
+                                        </select>
                                         <span class="select-arrow"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                       <label>
-                                           <span class="form-label"> Capacité</span>
-                                           <input type="number" name="capacity" value="2"  class="form-control" required/>
-                                           {{-- <select name="salle_id" id="salle_id" class="form-control" required >
-                                           @foreach ($salles as $salle )
-                                               <option value="{{$salle->id}}"> {{$salle->capacity}} </option>
+                                        <span class="form-label"> Capacité</span>
+                                        <input type="number" name="capacity" value="2"  class="form-control" required/>
+                                        {{-- <select name="salle_id" id="salle_id" class="form-control" required >
+                                        @foreach ($salles as $salle )
+                                            <option value="{{$salle->id}}"> {{$salle->capacity}} </option>
 
-                                           @endforeach
-                                           </select> --}}
-                                       </label>
+                                        @endforeach
+                                        </select> --}}
                                         <span class="select-arrow"></span>
                                     </div>
                                 </div>
@@ -59,17 +53,13 @@
                                 <div class="col-sm-6">
                                     <h3 style="color: rgb(204, 175, 48)"> Start Time : </h3>
                                     <div class="form-group">
-                                        <label>
-                                            <input class="form-control" type="time" id="appt" name="start_time" required>
-                                        </label>
+                                        <input class="form-control" type="time" id="appt" name="start_time" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <h3 style="color: rgb(204, 175, 48)"> End Time : </h3>
                                     <div class="form-group">
-                                        <label>
-                                            <input class="form-control" type="time" id="appt" name="end_time" required>
-                                        </label>
+                                        <input class="form-control" type="time" id="appt" name="end_time" required>
                                     </div>
                                 </div>
 

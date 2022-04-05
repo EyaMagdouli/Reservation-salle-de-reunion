@@ -29,7 +29,14 @@
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/home', [HomeController::class, 'index'])->name('home');
-        Route::resource('reservation', ReservationController::class);
+        //https://laravel.com/docs/9.x/controllers#actions-handled-by-resource-controller
+        Route::resource('reservation', ReservationController::class)->names(
+            [
+                'create' => 'reservation.build',
+                'store'  => 'reservation.store',
+                'show'   => 'reservation.show',
+            ]
+        );
     });
 
 
