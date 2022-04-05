@@ -31,7 +31,7 @@ Route::get('/',[LoginController::class, 'showLoginForm']);
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::resource('reservation', [ReservationController::class]);
+   Route::resource('reservation', ReservationController::class);
 });
 
 
