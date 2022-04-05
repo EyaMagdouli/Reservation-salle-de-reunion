@@ -9,7 +9,9 @@
                         <div class="form-header">
                             <h1>Réserver une salle pour votre réunion</h1>
                         </div>
-                        <form method="POST" action="{{ route('reservation.store_reservation') }}">
+
+                        {{-- /*route('reservation.store_reservation')*/  --}}
+                        <form method="POST" action="">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-4">
